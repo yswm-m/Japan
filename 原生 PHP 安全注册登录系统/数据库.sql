@@ -1,0 +1,15 @@
+-- 创建数据库
+CREATE DATABASE IF NOT EXISTS native_php_auth 
+DEFAULT CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
+
+USE native_php_auth;
+
+-- 创建用户表
+CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE COMMENT '用户名',
+    email VARCHAR(100) NOT NULL UNIQUE COMMENT '邮箱',
+    password VARCHAR(255) NOT NULL COMMENT '密码哈希值',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户表';
